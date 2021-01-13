@@ -1,0 +1,154 @@
+server:
+  port: 8080
+  servlet:
+    session:
+      tracking-modes: cookie
+security:
+  basic:
+    enabled: false
+management:
+  security:
+    enabled: false
+  endpoint:
+    health:
+      show-details: always
+
+spring:
+  profiles:
+    active: uat
+  mvc:
+    view:
+      prefix: /WEB-INF/jsp/
+      suffix: .jsp
+  servlet:
+    multipart:
+      max-file-size: 100MB
+      max-request-size: 100MB
+  jpa:
+    open_in_view: false
+    show:
+      sql: false
+    show-sql: false
+    hibernate:
+      naming:
+        strategy: org.hibernate.cfg.DefaultNamingStrategy
+    properties:
+      hibernate:
+        enable_lazy_load_no_trans: true
+  cloud:
+    discovery:
+      client:
+        composite-indicator:
+          enabled: false
+
+logging:
+  config: config/log4j2.yml
+
+login:
+  app: ${login-app}
+verify:
+  token:
+    url: ${verify-token-url}
+
+user:
+  repository:
+    url: ${user-repository-url}
+pms:
+  repository:
+    policy:
+      url: http://10.40.16.94:9091
+  membership-type:
+    admin: "ADMIN"
+
+solr:
+  mode: SINGLE
+  hosts: ${solr-server}/solr
+  url:
+    daily-sale-report: ${solr-server}/solr/daily-sale-report
+    account-portfolio: ${solr-server}/solr/account-portfolio
+
+template:
+  dir: .
+
+#kafka:
+#  host: "10.200.13.111"
+#  port: 9092
+#  topic:
+#    dw: "dwh"
+
+---
+spring:
+  profiles: uat
+login-app: https://id-uat.vndirect.com.vn
+verify-token-url: https://accounts-uat.vndirect.com.vn/authentication
+user-repository-url: https://accounts-uat.vndirect.com.vn
+solr-server: http://10.200.39.91:1608
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+          - refresh
+          - info
+          - health
+solr:
+  sync:
+    hour: -1
+    minute: 30
+
+cache:
+  clear:
+    hour: -1
+    minute: 0
+
+test:
+  accounts: ipa\thang.bachquoc-ipa\nhi.nguyenyen
+            ipa\toan.truong-ipa\nhi.nguyenyen
+            ipa\anh.nguyenquoc2-ipa\nhi.nguyenyen
+
+---
+spring:
+  profiles: staging
+login-app: https://id.vndirect.com.vn
+verify-token-url: https://vndid-int-api.vndirect.com.vn/authentication
+user-repository-url: https://vndid-int-api.vndirect.com.vn
+solr-server: http://10.200.14.30:1608
+management:
+  endpoints:
+    web:
+      exposure:
+        include:
+        - refresh
+        - info
+        - health
+solr:
+  sync:
+    hour: 7
+    minute: 30
+
+cache:
+  clear:
+    hour: 8
+    minute: 0
+test:
+  accounts: ipa\thang.bachquoc-ipa\lam.le2
+            ipa\dung.hoangkim-ipa\hieu.nguyenminh2
+            ipa\hanh.tranhong2-ipa\lam.le2
+            ipa\anh.nguyenquoc2-ipa\lam.le2
+
+---
+spring:
+  profiles: prod
+login-app: https://id.vndirect.com.vn
+verify-token-url: https://vndid-int-api.vndirect.com.vn/authentication
+user-repository-url: https://vndid-int-api.vndirect.com.vn
+solr-server: http://10.200.14.31:1608
+solr:
+  sync:
+    hour: 6
+    minute: 30
+
+cache:
+  clear:
+    hour: 7
+    minute: 0

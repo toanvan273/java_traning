@@ -1,0 +1,175 @@
+/* Style the header */
+header {
+  background-color: #666;
+  padding: 10px;
+  text-align: center;
+  font-size: 35px;
+  color: white;
+}
+
+.logout-button {
+  position: absolute;
+  right: 0px;
+  width: 300px;
+  border: 3px solid #73AD21;
+  padding: 10px;
+}
+
+
+#body-row {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+#sidebar-container {
+    min-height: 100vh;
+    background-color: #333333;
+    /*background-color: #f7941e;*/
+    padding: 0;
+}
+
+
+/* Sidebar sizes when expanded and expanded */
+.sidebar-expanded {
+    width: 230px;
+}
+
+.sidebar-collapsed {
+    width: 60px;
+}
+
+/* Menu item*/
+#sidebar-container .list-group a {
+    height: 50px;
+    color: white;
+}
+
+/* Submenu item*/
+#sidebar-container .list-group .sidebar-submenu a {
+    height: 45px;
+    padding-left: 30px;
+}
+
+.sidebar-submenu {
+    font-size: 0.9rem;
+}
+
+/* Separators */
+.sidebar-separator-title {
+    background-color: #333;
+    height: 35px;
+}
+
+.sidebar-separator {
+    background-color: #333;
+    height: 25px;
+}
+
+.logo-separator {
+    background-color: #333;
+    height: 60px;
+}
+
+/* Symbol für geschlossenes Untermenü */
+#sidebar-container .list-group .list-group-item[aria-expanded="false"] .submenu-icon::after {
+    content: " \f0d7";
+    font-family: FontAwesome, sans-serif;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+
+/* Geöffnetes Untermenüsymbol */
+#sidebar-container .list-group .list-group-item[aria-expanded="true"] .submenu-icon::after {
+    content: " \f0da";
+    font-family: FontAwesome, sans-serif;
+    display: inline;
+    text-align: right;
+    padding-left: 10px;
+}
+
+.paging {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 25px;
+    margin-bottom: 15px;
+}
+
+.paginatorList li {
+    display: inline-block;
+    margin-left: 5px;
+}
+
+.paginatorList li a {
+    float: left;
+    color: black;
+    padding: 4px 8px;
+    text-decoration: none;
+    border: 1px solid #ddd;
+}
+
+li.paginatorCurr a {
+    color: white;
+    background-color: #1A3080;
+    border: 1px solid #1A3080;
+}
+
+li.paginatorFirst a i, li.paginatorLast a i {
+    -webkit-text-stroke: 1px white;
+}
+
+li.paginatorNext a i, li.paginatorPrev a i {
+    -webkit-text-stroke: 2px white;
+}
+
+.paginatorList li:hover {
+    background-color: #ddd;
+}
+
+#query-event-result-table td {
+    word-break: break-word;
+}
+
+#query-message-result-table td {
+    word-break: break-word;
+}
+
+#checking-margin-result-table td {
+    word-break: break-word;
+}
+
+#checking-missing-order-result td {
+    word-break: break-word;
+}
+
+input[type=button], input[type=submit], input[type=reset] {
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    text-decoration: none;
+    margin: 4px 2px;
+    cursor: pointer;
+}
+
+#tra-soat-sms-table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#tra-soat-sms-table td, #tra-soat-sms-table th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#tra-soat-sms-table tr:hover {background-color: #ddd;}
+
+#tra-soat-sms-table th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}
+
+

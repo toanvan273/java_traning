@@ -1,0 +1,11 @@
+ Cho tk: ai_do_80
+ 
+
+vao mysql
+	
+- mysql -h 10.26.53.155 -u kyc_uat -p
+- password: ILoveKYC
+ 
+- select * from dynamic_field where parentId=817311214101;
+
+UPDATE dynamic_field SET value = 'SG173025' WHERE name='hrcode' AND parentId=817311214101;

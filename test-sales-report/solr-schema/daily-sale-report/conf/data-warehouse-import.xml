@@ -1,0 +1,67 @@
+<dataConfig>
+	
+    <document>
+		<entity name="daily-sale-report" query="SELECT * FROM do_report.daily_sale_report_vw">
+
+		<field column="date" name="date"/>
+
+		<field column="acctno" name="acctNo"/>
+		
+		<field column="custid" name="custId"/>
+		<field column="cust_fullname" name="custFullName"/>
+		<field column="opendate" name="openDate"/>
+		<field column="broker_id" name="brokerId"/>
+		<field column="sale_fullname" name="saleFullName"/>
+		<field column="hr_code" name="hrCode"/>
+		<field column="group_name" name="groupName"/>
+		<field column="group_id_userid" name="groupIdUserid"/>
+		
+		<field column="last_trading_date" name="lastTradingDate"/>
+
+		<field column="active_flag" name="activeFlag"/>		
+		
+		<field column="stock_flag" name="stockFlag"/>
+		<field column="derivative_flag" name="derivativeFlag"/>
+		<field column="margin_stock_flag" name="marginStockFlag"/>
+		<field column="margin_derivative_flag" name="marginDerivativeFlag"/>
+		<field column="bond_flag" name="bondFlag"/>
+		<field column="fund_flag" name="fundFlag"/>
+		<field column="asset_management_flag" name="assetManagementFlag"/>
+		
+		<field column="stock_trading_value" name="stockTradingValue"/>
+		<field column="stock_trading_fee" name="stockTradingFee"/>
+		
+		<field column="derivative_trading_fee" name="derivativeTradingFee"/>
+		<field column="derivative_match_quantity" name="derivativeMatchQuantity"/>
+		
+		<field column="stock_total_stock_amount" name="stockTotalStockAmount"/>
+		
+		<field column="nav" name="nav"/>
+		<field column="aum" name="aum"/>
+		
+		<field column="total_nsr" name="totalNSR"/>
+		<field column="total_asset" name="totalAsset"/>
+		<field column="withdraw_amount" name="withdrawAmount"/>
+		<field column="transfer_amount" name="transferAmount"/>
+		<field column="debt_stock_margin" name="debtStockMargin"/>
+		<field column="over_due_debt" name="overdueDebt"/>
+		
+		<field column="stock_total_cash_amount" name="stockTotalCashAmount" /> 
+		<field column="total_derivative_nav" name="totalDerivativeNAV" /> 
+		<field column="bond_value" name="bondValue" /> 
+		<field column="fund_value" name="fundValue" /> 
+   
+		<field column="nsr_stock_trading" name="nsrStockTrading"  /> 
+		<field column="nsr_derivative_trading" name="nsrDerivativeTrading"  /> 
+		<field column="nsr_d_margin" name="nsrDmargin"  /> 
+		<field column="nsr_deal_financing" name="nsrDealFinancing" />
+		<field column="nsr_stock_debt_uttb" name="nsrStockDebtUttb" /> 
+		<field column="nsr_fund" name="nsrFund" /> 
+		<field column="nsr_bond" name="nsrBond" /> 
+		<field column="nsr_sss" name="nsrSSS" /> 
+		<field column="nsr_vnvalue" name="nsrVNvalue" /> 
+		<field column="nsr_ra" name="nsrRA" /> 
+		
+    </entity>
+   </document>
+</dataConfig>

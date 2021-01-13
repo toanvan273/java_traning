@@ -1,0 +1,26 @@
+<dataConfig>
+    <document>
+        <entity name="daily_derivative_revenue" query="
+            SELECT [date],[acctno],[hr_code],[staff_fullname],[custid],[customer_fullname],[group_code],[Role],[pos_code],[pos_name],[jds],[position],[derivative_certificate],[Group_name_final],[product_code],[match_quantity],[real_trading_fee]
+            FROM [datawarehouse_v3].[pms].[daily_derivative_revenue_uat1]
+            WHERE [date] = CAST(GETDATE() - 1 AS DATE)">
+            <field column="date" name="date"/>
+            <field column="acctno" name="acctNo"/>
+            <field column="hr_code" name="hrCode"/>
+            <field column="staff_fullname" name="staffFullname"/>
+            <field column="custid" name="custid"/>
+            <field column="customer_fullname" name="customerFullname"/>
+            <field column="group_code" name="departmentId"/>
+            <field column="Role" name="role"/>
+            <field column="pos_code" name="posCode"/>
+            <field column="pos_name" name="posName"/>
+            <field column="jds" name="jds"/>
+            <field column="position" name="position"/>
+            <field column="derivative_certificate" name="hasCertificate"/>
+            <field column="Group_name_final" name="departmentName"/>
+            <field column="product_code" name="product"/>
+            <field column="match_quantity" name="matchQuantity"/>
+            <field column="real_trading_fee" name="realTradingFee"/>
+        </entity>
+    </document>
+</dataConfig>

@@ -1,0 +1,483 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nav-detail" pageWidth="1130" pageHeight="595" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1090" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="b20acda5-5a5b-4224-8dfe-6d937a87d900">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="New Data Adapter (4)"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Table_TD">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{recordShowCount}%2==0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F6F6F6"/>
+		</conditionalStyle>
+	</style>
+	<parameter name="queryLastDate" class="java.util.Date" isForPrompting="false"/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="date" class="java.lang.Long"/>
+	<field name="acctNo" class="java.lang.String"/>
+	<field name="custFullName" class="java.lang.String"/>
+	<field name="endPeriodAssetManagementFlag" class="java.lang.Integer"/>
+	<field name="endPeriodStockTotalCashAmount" class="java.lang.Double"/>
+	<field name="endPeriodStockTotalStockAmount" class="java.lang.Double"/>
+	<field name="endPeriodTotalDerivativeNAV" class="java.lang.Double"/>
+	<field name="endPeriodBondValue" class="java.lang.Double"/>
+	<field name="endPeriodFundValue" class="java.lang.Double"/>
+	<field name="endPeriodDebtStockMargin" class="java.lang.Double"/>
+	<field name="endPeriodNAV" class="java.lang.Double"/>
+	<variable name="date" class="java.lang.String">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format(new java.util.Date($F{date}.longValue()))]]></variableExpression>
+	</variable>
+	<variable name="queryLastDate" class="java.lang.String">
+		<variableExpression><![CDATA[new java.text.SimpleDateFormat("dd/MM/yyyy").format($P{queryLastDate})]]></variableExpression>
+	</variable>
+	<variable name="dataLastDateExist" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$V{queryLastDate}.equalsIgnoreCase($V{date})]]></variableExpression>
+	</variable>
+	<variable name="endPeriodAssetManagementFlag" class="java.lang.Integer">
+		<variableExpression><![CDATA[$F{endPeriodAssetManagementFlag} > 0 ? 1 : 0]]></variableExpression>
+	</variable>
+	<variable name="endPeriodStockTotalCashAmount" class="java.lang.Long">
+		<variableExpression><![CDATA[$V{dataLastDateExist} && $V{endPeriodAssetManagementFlag} == 0 ? java.lang.Math.round($F{endPeriodStockTotalCashAmount}) : 0]]></variableExpression>
+	</variable>
+	<variable name="endPeriodStockTotalStockAmount" class="java.lang.Long">
+		<variableExpression><![CDATA[$V{dataLastDateExist} && $V{endPeriodAssetManagementFlag} == 0 ? java.lang.Math.round($F{endPeriodStockTotalStockAmount}):0]]></variableExpression>
+	</variable>
+	<variable name="endPeriodTotalDerivativeNAV" class="java.lang.Long">
+		<variableExpression><![CDATA[$V{dataLastDateExist} && $V{endPeriodAssetManagementFlag} == 0 ? java.lang.Math.round($F{endPeriodTotalDerivativeNAV}):0]]></variableExpression>
+	</variable>
+	<variable name="endPeriodBondValue" class="java.lang.Long">
+		<variableExpression><![CDATA[$V{dataLastDateExist} && $V{endPeriodAssetManagementFlag} == 0 ? java.lang.Math.round($F{endPeriodBondValue}):0]]></variableExpression>
+	</variable>
+	<variable name="endPeriodFundValue" class="java.lang.Long">
+		<variableExpression><![CDATA[$V{dataLastDateExist} && $V{endPeriodAssetManagementFlag} == 0 ? java.lang.Math.round($F{endPeriodFundValue}):0]]></variableExpression>
+	</variable>
+	<variable name="endPeriodDebtStockMargin" class="java.lang.Long">
+		<variableExpression><![CDATA[$V{dataLastDateExist} && $V{endPeriodAssetManagementFlag} == 0 ? java.lang.Math.round($F{endPeriodDebtStockMargin}):0]]></variableExpression>
+	</variable>
+	<variable name="endPeriodNAV" class="java.lang.Long">
+		<variableExpression><![CDATA[$V{dataLastDateExist} && $V{endPeriodAssetManagementFlag} == 0 ? java.lang.Math.round($F{endPeriodNAV}) : 0]]></variableExpression>
+	</variable>
+	<variable name="columnDataExist" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$V{endPeriodStockTotalCashAmount} !=0 || $V{endPeriodStockTotalStockAmount} !=0  || $V{endPeriodBondValue} !=0 || $V{endPeriodFundValue}!=0 || $V{endPeriodDebtStockMargin} !=0 || $V{endPeriodNAV} !=0]]></variableExpression>
+	</variable>
+	<variable name="sumEndPeriodStockTotalCashAmountNAV" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{endPeriodStockTotalCashAmount}]]></variableExpression>
+	</variable>
+	<variable name="sumEndPeriodStockTotalStockAmountNAV" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{endPeriodStockTotalStockAmount}]]></variableExpression>
+	</variable>
+	<variable name="sumEndPeriodTotalDerivativeNAVNAV" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{endPeriodTotalDerivativeNAV}]]></variableExpression>
+	</variable>
+	<variable name="sumEndPeriodBondValueNAV" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{endPeriodBondValue}]]></variableExpression>
+	</variable>
+	<variable name="sumEndPeriodFundValueNAV" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{endPeriodFundValue}]]></variableExpression>
+	</variable>
+	<variable name="sumEndPeriodDebtStockMarginNAV" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{endPeriodDebtStockMargin}]]></variableExpression>
+	</variable>
+	<variable name="sumEndPeriodNAV" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{endPeriodNAV}]]></variableExpression>
+	</variable>
+	<variable name="recordShowCount" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$V{columnDataExist} ? 1 : 0]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="570" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="dd42efc8-e146-48e4-8a40-0014409e6442">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giá trị trái phiếu cuối kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="8d8d6738-0714-4105-8a04-b5922175c577">
+					<property name="net.sf.jasperreports.export.html.class" value="accNo-popup-nav-detail-header"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tài khoản]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="45b261f2-3b20-48cc-969f-c9d475272775">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giá trị chứng khoán 
+cơ sở cuối kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="700" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="a0dcdafb-22f1-43be-aab7-16105d615fd7"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Giá trị chứng chỉ quỹ 
+cuối kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="830" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="9d625b33-9f70-45cc-8b18-64d596be92dd">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ Dư nợ cho vay cuối kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="310" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="312b55bd-a876-491d-9519-cf3702e0d110">
+					<property name="net.sf.jasperreports.export.html.class" value="end-period-stock-total-cash-amount-header"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng tiền cơ sở cuối kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="960" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="58b6efd3-6c4a-4e04-9c4a-892ca22d9fef">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NAV cuối kỳ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="130" y="0" width="180" height="30" backcolor="#E1E1E1" uuid="eb16bf8e-bfde-4c20-a811-67ef4e03726a">
+					<property name="net.sf.jasperreports.export.html.class" value="cust-full-name-header"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên khách hàng]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="0" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="b799009a-5161-40ee-98ba-d003eb7d459e">
+					<property name="net.sf.jasperreports.export.html.class" value="accNo-popup-nav-detail"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{acctNo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="310" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="c42cd17b-4232-470f-8b55-21a560d92f0c">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<property name="net.sf.jasperreports.export.html.class" value="end-period-stock-total-cash-amount"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endPeriodStockTotalCashAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="440" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="d8257f63-90f6-4485-8a2a-d5da32aa2a8e">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endPeriodStockTotalStockAmount}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="570" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="243a397b-7cc9-4122-bbb2-263bc1bca7be">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endPeriodBondValue}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="700" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="33c8717d-9379-4f7c-b34a-8ac20ba5e238">
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endPeriodFundValue}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="830" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="72199119-b8a4-4d2e-ba57-6b0a04d800a1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endPeriodDebtStockMargin}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="960" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="066ae720-976b-4347-8e76-0f998ea7ff27">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{endPeriodNAV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="130" y="0" width="180" height="30" isRemoveLineWhenBlank="true" uuid="26f7dee3-7fc6-47b9-85fb-2216d8ca3358">
+					<property name="net.sf.jasperreports.export.html.class" value="cust-full-name"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial" size="10"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{custFullName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="130" height="30" uuid="b336fbe6-da5d-4312-b1db-9e4152c282cf">
+					<property name="net.sf.jasperreports.export.html.class" value="accNo-popup-nav-detail-footer"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG]]></text>
+			</staticText>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="310" y="0" width="130" height="30" uuid="a19bf768-b088-4eb6-b81f-cc06fbf41362">
+					<property name="net.sf.jasperreports.export.html.class" value="end-period-stock-total-cash-amount-footer"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumEndPeriodStockTotalCashAmountNAV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="440" y="0" width="130" height="30" uuid="bc1acf45-4a4e-43a8-9c45-2b924ba49944">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumEndPeriodStockTotalStockAmountNAV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="570" y="0" width="130" height="30" uuid="5a15fe9c-0025-404e-adec-cbee648a712d">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumEndPeriodBondValueNAV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="700" y="0" width="130" height="30" uuid="6e864835-c729-4730-9656-fc705614c1fd"/>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumEndPeriodFundValueNAV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="830" y="0" width="130" height="30" uuid="97b8a797-bd5e-48b8-a2fe-1eb14566b3a5">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumEndPeriodDebtStockMarginNAV}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="960" y="0" width="130" height="30" uuid="ef5448d7-838c-4b70-bee7-27ebe4ba7119">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumEndPeriodNAV}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="130" y="0" width="180" height="30" uuid="2357d24e-a8d5-4882-8b26-8b79bb9935a1">
+					<property name="net.sf.jasperreports.export.html.class" value="cust-full-name-footer"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" size="10" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

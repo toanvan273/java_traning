@@ -1,0 +1,60 @@
+Configuration:
+  status: warn
+  Appenders:
+    Console:
+      name: CONSOLE
+      target: SYSTEM_OUT
+      PatternLayout:
+        pattern: '%d{yyyy-MM-dd HH:mm:ss,SSS} %-5level %c.%M(%L) - %msg%n'
+    RollingRandomAccessFile:
+    - name: INFO
+      fileName: log/doffice-report-api.log
+      filePattern: log/$${date:yyyy-MM}/%d{yyyy-MM-dd}-doffice-report-api-%i.log.gz
+      PatternLayout:
+        pattern: '%d{yyyy-MM-dd HH:mm:ss,SSS} %-5level %c.%M(%L) - %msg%n'
+      Policies:
+        TimeBasedTriggeringPolicy: {
+        }
+        OnStartupTriggeringPolicy: {
+        }
+        SizeBasedTriggeringPolicy:
+          size: 200 MB
+    - name: ERROR
+      fileName: log/doffice-report-api-error.log
+      filePattern: log/$${date:yyyy-MM}/%d{yyyy-MM-dd}-doffice-report-api-error-%i.log.gz
+      PatternLayout:
+        pattern: '%d{yyyy-MM-dd HH:mm:ss,SSS} %-5level %c.%M(%L) - %msg%n'
+      Policies:
+        TimeBasedTriggeringPolicy: {
+        }
+    - name: JSON
+      fileName: log/doffice-report-api.json
+      filePattern: log/$${date:yyyy-MM}/%d{yyyy-MM-dd}-doffice-report-api-%i.json.gz
+      JSONLayout:
+        stacktraceAsString: true
+        compact: true
+        eventEol: true
+      Policies:
+        TimeBasedTriggeringPolicy: {
+        }
+        OnStartupTriggeringPolicy: {
+        }
+        SizeBasedTriggeringPolicy:
+          size: 200 MB
+  Loggers:
+    Logger:
+    - name: EventLogger
+      level: info
+      additivity: false
+      AppenderRef:
+      - ref: ERROR
+      - ref: INFO
+      - ref: JSON
+    Root:
+      level: info
+      AppenderRef:
+      - ref: CONSOLE
+      - ref: ERROR
+        level: error
+      - ref: INFO
+      - ref: JSON

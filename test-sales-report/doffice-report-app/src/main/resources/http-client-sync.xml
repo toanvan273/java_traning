@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="urConnectionManager" class="org.apache.http.impl.conn.PoolingHttpClientConnectionManager">
+        <property name="maxTotal" value="1000"/>
+        <property name="defaultMaxPerRoute" value="10"/>
+    </bean>
+
+    <bean id="urRequestConfig" factory-bean="urRequestConfigBuilder" factory-method="build"/>
+
+    <bean id="urRequestConfigBuilder" class="org.apache.http.client.config.RequestConfig"
+          factory-method="custom">
+        <property name="socketTimeout" value="432000000"/>
+        <property name="connectTimeout" value="432000000"/>
+    </bean>
+
+    <!--bean id="urCredentialProvider" class="org.apache.http.impl.client.BasicCredentialsProvider" />
+
+    <bean id="methodInvoke"
+        class="org.springframework.beans.factory.config.MethodInvokingFactoryBean">
+        <property name="targetObject" ref="urCredentialProvider" />
+        <property name="targetMethod" value="setCredentials" />
+        <property name="arguments">
+            <list>
+                <ref bean="urAuthScope" />
+                <ref bean="urCredentials" />
+            </list>
+        </property>
+    </bean>
+
+    < bean id="urCredentials" class="org.apache.http.auth.UsernamePasswordCredentials">
+        <constructor-arg name="userName" value="test"></constructor-arg>
+        <constructor-arg name="password" value="test"></constructor-arg>
+    </bean>
+
+    <bean id="urAuthScope" class="org.apache.http.auth.AuthScope">
+        <constructor-arg name="host"><value>localhost</value></constructor-arg>
+        <constructor-arg name="port"><value>8080</value></constructor-arg>
+        <constructor-arg><null /></constructor-arg>
+        <constructor-arg><null /></constructor-arg>
+    </bean-->
+
+    <bean id="urHttpClientBuilder" class="org.apache.http.impl.client.HttpClientBuilder" factory-method="create">
+        <property name="defaultRequestConfig" ref="urRequestConfig"/>
+        <property name="connectionManager" ref="urConnectionManager"/>
+        <!--  property name="defaultCredentialsProvider" ref="urCredentialProvider" /-->
+    </bean>
+
+    <bean id="urHttpClient" factory-bean="urHttpClientBuilder" factory-method="build"/>
+</beans>
+	

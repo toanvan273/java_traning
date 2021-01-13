@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+        "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+        "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+<tiles-definitions>
+
+    <!-- Basic layout -->
+    <definition name="layout.basic" template="/WEB-INF/jsp/layout/basic.jsp">
+        <put-attribute name="body" value=""/>
+    </definition>
+    
+     <!-- Login Pages -->
+    <definition name="daily-sale-report-director" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/jsp/daily-sale-report-director.jsp"/>
+    </definition>
+    
+     <definition name="daily-sale-report-manager" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/jsp/daily-sale-report-manager.jsp"/>
+    </definition>
+    
+     <definition name="daily-sale-report-staff" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/jsp/daily-sale-report-staff.jsp"/>
+    </definition>
+
+    <definition name="revenue-report-staff" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/jsp/revenue-report-staff.jsp"/>
+    </definition>
+
+    <definition name="revenue-report-admin" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/jsp/revenue-report-admin.jsp"/>
+    </definition>
+
+    <definition name="commission-report-staff" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/jsp/commission-report-staff.jsp"/>
+    </definition>
+
+    <definition name="commission-report-admin" extends="layout.basic">
+        <put-attribute name="body" value="/WEB-INF/jsp/commission-report-admin.jsp"/>
+    </definition>
+
+</tiles-definitions>

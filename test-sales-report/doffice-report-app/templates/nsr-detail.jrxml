@@ -1,0 +1,613 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.14.0.final using JasperReports Library version 6.14.0-2ab0d8625be255bf609c78e1181801213e51db8f  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="nsr_detail" pageWidth="1390" pageHeight="842" orientation="Landscape" whenNoDataType="AllSectionsNoDetail" columnWidth="1350" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" isIgnorePagination="true" uuid="fd579856-8d34-4ad8-a767-8b65e92d8a65">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="NSR Detail"/>
+	<property name="net.sf.jasperreports.export.xls.detect.cell.type" value="true"/>
+	<property name="com.jaspersoft.studio.unit." value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageHeight" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.pageWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.topMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.bottomMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.leftMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.rightMargin" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnWidth" value="pixel"/>
+	<property name="com.jaspersoft.studio.unit.columnSpacing" value="pixel"/>
+	<style name="Table_TD">
+		<conditionalStyle>
+			<conditionExpression><![CDATA[$V{recordShowCount}%2==0]]></conditionExpression>
+			<style mode="Opaque" backcolor="#F6F6F6"/>
+		</conditionalStyle>
+	</style>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="acctNo" class="java.lang.String"/>
+	<field name="custFullName" class="java.lang.String"/>
+	<field name="nsrStockTrading" class="java.lang.Double"/>
+	<field name="nsrDerivativeTrading" class="java.lang.Double"/>
+	<field name="nsrDmargin" class="java.lang.Double"/>
+	<field name="nsrDealFinancing" class="java.lang.Double"/>
+	<field name="nsrStockDebtUttb" class="java.lang.Double"/>
+	<field name="nsrFund" class="java.lang.Double"/>
+	<field name="nsrBond" class="java.lang.Double"/>
+	<field name="nsrSSS" class="java.lang.Double"/>
+	<field name="nsrVNvalue" class="java.lang.Double"/>
+	<field name="nsrRA" class="java.lang.Double"/>
+	<field name="totalNSR" class="java.lang.Double"/>
+	<variable name="nsrStockTrading" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrStockTrading})]]></variableExpression>
+	</variable>
+	<variable name="nsrDerivativeTrading" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrDerivativeTrading})]]></variableExpression>
+	</variable>
+	<variable name="nsrDmargin" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrDmargin})]]></variableExpression>
+	</variable>
+	<variable name="nsrDealFinancing" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrDealFinancing})]]></variableExpression>
+	</variable>
+	<variable name="nsrStockDebtUttb" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrStockDebtUttb})]]></variableExpression>
+	</variable>
+	<variable name="nsrFund" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrFund})]]></variableExpression>
+	</variable>
+	<variable name="nsrBond" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrBond})]]></variableExpression>
+	</variable>
+	<variable name="nsrSSS" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrSSS})]]></variableExpression>
+	</variable>
+	<variable name="nsrVNvalue" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrVNvalue})]]></variableExpression>
+	</variable>
+	<variable name="nsrRA" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{nsrRA})]]></variableExpression>
+	</variable>
+	<variable name="totalNSR" class="java.lang.Long">
+		<variableExpression><![CDATA[java.lang.Math.round($F{totalNSR})]]></variableExpression>
+	</variable>
+	<variable name="columnDataExist" class="java.lang.Boolean">
+		<variableExpression><![CDATA[$V{nsrStockTrading} !=0 || $V{nsrDmargin} !=0 || $V{nsrDealFinancing} !=0 || $V{nsrStockDebtUttb} !=0 || $V{nsrFund} != 0 || $V{nsrSSS} != 0 || $V{nsrRA} !=0 || $V{totalNSR} !=0]]></variableExpression>
+	</variable>
+	<variable name="sumNsrStockTrading" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrStockTrading}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrDerivativeTrading" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrDerivativeTrading}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrDmargin" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrDmargin}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrDealFinancing" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrDealFinancing}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrStockDebtUttb" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrStockDebtUttb}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrFund" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrFund}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrBond" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrBond}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrSSS" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrSSS}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrVNvalue" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrVNvalue}]]></variableExpression>
+	</variable>
+	<variable name="sumNsrRA" class="java.lang.Long" calculation="Sum">
+		<variableExpression><![CDATA[$V{nsrRA}]]></variableExpression>
+	</variable>
+	<variable name="sumTotalNSR" class="java.lang.Double" calculation="Sum">
+		<variableExpression><![CDATA[$V{totalNSR}]]></variableExpression>
+	</variable>
+	<variable name="recordShowCount" class="java.lang.Integer" calculation="Sum">
+		<variableExpression><![CDATA[$V{columnDataExist} ? 1 : 0]]></variableExpression>
+	</variable>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<columnHeader>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="e0467ab8-22a5-4640-b292-12bca691fece">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1af03fce-eff9-44b4-8565-fa8711bb3f3b"/>
+					<property name="net.sf.jasperreports.export.html.class" value="accNo-popup-nsr-detail-header"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tài khoản]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="310" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="65977945-e7fe-4c4c-a596-b37d51b9abe6">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="83f42892-533f-4541-86ab-2beb54f56a67"/>
+					<property name="net.sf.jasperreports.export.html.class" value="nsr-stock-trading-header"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSR Giao dịch 
+cơ sở]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="440" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="8af0f429-e44f-4bb2-9a16-259059253d0e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a20171f8-d8b1-410d-9baf-10059221ba09"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSR Dmargin]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="570" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="4c69c9a0-a384-4cbc-b645-9cf2379e2b61">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2f5cca7-f6a4-4e79-9d88-bda11185743d"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSR Dfinance]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="830" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="fb21b249-0529-4f89-b74d-e4d5fca462e3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7cf5192-a1f7-43f4-899c-a67ae18cbb1a"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSR Fund]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="960" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="504f97ec-2870-4c25-96a3-116b0207408b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd3074e9-ca6f-4997-9620-12cfb85524ad"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSR SSS]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1090" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="db2164c5-8b4b-45a9-8823-364e674be764">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82bb8c86-b560-4ed4-ad5d-866ee34aee51"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSR Wealth]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="1220" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="c4f30b4b-861b-49c5-b0eb-067d47bc04d1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="8a0db66a-7bea-4b71-afa0-b56dc892ca99"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tổng NSR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="700" y="0" width="130" height="30" backcolor="#E1E1E1" uuid="733ede5f-cbff-4776-9efc-0bbad44ad811">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7cf5192-a1f7-43f4-899c-a67ae18cbb1a"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[NSR UTTB]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="130" y="0" width="180" height="30" backcolor="#E1E1E1" uuid="5ebb6b01-6625-4b0b-8ff8-72d707af1ebc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="83f42892-533f-4541-86ab-2beb54f56a67"/>
+					<property name="net.sf.jasperreports.export.html.class" value="cust-full-name-header"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[Tên khách hàng]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="30" splitType="Stretch">
+			<textField isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="0" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="3fb8f78e-51ce-48fa-8b24-cfd8916405cf">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="1af03fce-eff9-44b4-8565-fa8711bb3f3b"/>
+					<property name="net.sf.jasperreports.export.html.class" value="accNo-popup-nsr-detail"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{acctNo}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="310" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="d607c2bb-050b-4142-ab61-1897b7f80149">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="83f42892-533f-4541-86ab-2beb54f56a67"/>
+					<property name="net.sf.jasperreports.export.html.class" value="nsr-stock-trading"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nsrStockTrading}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="440" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="a8ca74bc-c7bc-442b-876d-25be63bf30e1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="a20171f8-d8b1-410d-9baf-10059221ba09"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nsrDmargin}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="570" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="9643e125-0fdb-46a2-ba08-0f20d85cad05">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d2f5cca7-f6a4-4e79-9d88-bda11185743d"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nsrDealFinancing}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="830" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="4eaa5776-ac92-422d-9ad0-527f5ce5780f">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7cf5192-a1f7-43f4-899c-a67ae18cbb1a"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nsrFund}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="960" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="c3e995a2-652f-4aa4-9fe6-e19de9774989">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd3074e9-ca6f-4997-9620-12cfb85524ad"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nsrSSS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="1090" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="ea37ab19-c759-4bc8-8222-c43813b46917">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="82bb8c86-b560-4ed4-ad5d-866ee34aee51"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nsrRA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="1220" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="09f53fd7-f01c-4ee6-8b1c-487157f7c468">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{totalNSR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="700" y="0" width="130" height="30" isRemoveLineWhenBlank="true" uuid="ce9ebcae-f59a-45da-82c8-71ae54256b1b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b7cf5192-a1f7-43f4-899c-a67ae18cbb1a"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{nsrStockDebtUttb}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement style="Table_TD" x="130" y="0" width="180" height="30" isRemoveLineWhenBlank="true" uuid="d157a872-3ef8-4e67-8d03-0cd2bc891568">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="83f42892-533f-4541-86ab-2beb54f56a67"/>
+					<property name="net.sf.jasperreports.export.html.class" value="cust-full-name"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+					<printWhenExpression><![CDATA[$V{columnDataExist}]]></printWhenExpression>
+				</reportElement>
+				<box leftPadding="5" rightPadding="0">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Left" verticalAlignment="Middle">
+					<font fontName="Arial"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{custFullName}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<summary>
+		<band height="30" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="130" height="30" uuid="2153a83b-9fe2-4b48-8eed-b9d82571fae3">
+					<property name="net.sf.jasperreports.export.html.class" value="accNo-popup-nsr-detail-footer"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TỔNG]]></text>
+			</staticText>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="310" y="0" width="130" height="30" uuid="ad3ed549-2d64-4ce5-9b82-f8dafa9f2069">
+					<property name="net.sf.jasperreports.export.html.class" value="nsr-stock-trading-footer"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNsrStockTrading}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="440" y="0" width="130" height="30" uuid="8a1918ea-2305-4a10-83ab-16947db8c81f">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNsrDmargin}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="570" y="0" width="130" height="30" uuid="ce465e1f-4081-4213-9a23-0d3cac5d8657">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNsrDealFinancing}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="830" y="0" width="130" height="30" uuid="ddd4fd11-6d52-4bf2-81bf-14b65c31f154">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNsrFund}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="960" y="0" width="130" height="30" uuid="fa4e3708-e471-4754-8eb0-f77e96777656">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNsrSSS}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="1090" y="0" width="130" height="30" uuid="e296b30c-7ac6-44fb-899e-29c2e11dbbfb">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNsrRA}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="1220" y="0" width="130" height="30" uuid="8fcef1b3-a2b2-48de-bcc8-74a6a4c289b1">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumTotalNSR}]]></textFieldExpression>
+			</textField>
+			<textField pattern="#,##0;-#,##0" isBlankWhenNull="true">
+				<reportElement x="700" y="0" width="130" height="30" uuid="b5f876d2-a532-4420-9e10-624161d09e7a">
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box rightPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Right" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$V{sumNsrStockDebtUttb}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="130" y="0" width="180" height="30" uuid="465a8fd2-3a06-4d42-98a8-0605d3b546ea">
+					<property name="net.sf.jasperreports.export.html.class" value="cust-full-name-footer"/>
+					<property name="com.jaspersoft.studio.unit.width" value="px"/>
+				</reportElement>
+				<box leftPadding="5">
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Arial" isBold="true"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

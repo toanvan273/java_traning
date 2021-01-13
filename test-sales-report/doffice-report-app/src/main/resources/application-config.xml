@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns="http://www.springframework.org/schema/beans"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <context:annotation-config/>
+    <!-- API -->
+    <context:component-scan base-package="vn.com.vndirect.report.db.configuration" />
+    <context:component-scan base-package="vn.com.vndirect.report.service" />
+    <context:component-scan base-package="vn.com.vndirect.report.controller" />
+    <context:component-scan base-package="vn.com.vndirect.report.job" />
+    <context:property-placeholder location="classpath:common.properties" />
+    
+    <bean class="vn.com.vndirect.vndid.service.impl.SearchServiceImpl" />
+    <bean class="vn.com.vndirect.vndid.service.impl.GroupProfileServiceImpl" />
+    <bean class="vn.com.vndirect.vndid.ver3service.impl.Ver3CareByServiceImpl"/>
+    <bean class="vn.com.vndirect.vndid.service.impl.UserProfileServiceImpl"/>
+    
+    <bean id="tilesViewResolver"
+                class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="order" value="1"/>
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"/>
+    </bean>
+
+    <bean id="tilesConfigurer"
+                class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/tiles/definitions.xml</value>
+            </list>
+        </property>
+    </bean>
+     
+    <import resource="http-client-sync.xml"/>
+    
+</beans>
